@@ -1,0 +1,396 @@
+{% extends 'basic.html' %}
+{% block title %} Profile {% endblock %}
+{% block css %}
+  body{
+        color:white;
+      }
+
+      .orgimg{
+        position:absolute;
+        border-radius:100%;
+        height:400px;
+        width:400px;
+        margin-left:60px;
+        margin-top:60px;
+        /* padding-top:25px; */
+        /* padding-left:25px; */
+        z-index:-1;
+      }
+
+
+
+#myImg {
+
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 150px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1)}
+  to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 50px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+table {
+
+
+
+  border-collapse: collapse;
+
+  background-color: black;
+  color: white;
+  width:50%;
+
+
+}
+
+th, td {
+  text-align: left;
+  padding: 18px;
+  font-size:20px;
+
+}
+
+.orgdesc{
+  padding-right:125px;
+  padding-left:125px;
+  padding-top:400px;
+  text-align:center;
+}
+canvas {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+}
+#c{
+  z-index:-1;
+}
+
+
+
+Profile apge body
+
+{% endblock %}
+{% load static %}
+{% block body %}
+    <canvas id=c></canvas>
+    <!-- <div class="carditem ">
+      <div class="card" style="width: 40rem; ">
+        <img class="card-img-top" src="{{ user.logo.url }}" alt="Image of {{ user.organization_name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.organization_name }}</h5>
+          <p class="card-text">{{ user.organization_description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Website: <a href="{{ user.organization_website }}">{{ user.organization_name }}</a></li>
+          <li class="list-group-item">Admin: {{ user.admin_name }}</li>
+          <li class="list-group-item">Email: {{ user.email }}</li>
+          <li class="list-group-item">Country: {{ user.country }}</li>
+          <li class="list-group-item">Postal Code: {{ user.postal_code }}</li>
+
+        </ul>
+      </div>
+    </div> -->
+
+    <!-- <div class="container"> -->
+      <img src="{{ user.logo.url }}" alt="{{ user.organization_name }}" id="myImg" class="orgimg">
+
+    <!-- </div> -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+
+
+
+<h1 style="text-align:right; font-size:45px; padding-top:15px; "><b><u>{{ user.organization_name }}</u></b></h1>
+<br><br>
+
+<table align="right">
+
+
+  <tr>
+    <td>Website: <a href="{{ user.organization_website }}">{{ user.organization_name }}</a></td>
+
+  </tr>
+  <tr>
+    <td>Admin: {{ user.admin_name }}</td>
+
+  </tr>
+  <tr>
+    <td>Email: {{ user.email }}</td>
+
+</tr>
+<tr>
+  <td>Country: {{ user.country }}</td>
+
+</tr>
+<tr>
+  <td>Postal Code: {{ user.postal_code }}</td>
+
+</tr>
+
+</table>
+
+
+<div class="orgdesc">
+
+
+<h1 style="font-size:35px"><b><u>Organization Description</u></b></h1>
+<br><br>
+<h5>{{ user.organization_description }}</h5>
+</div>
+    <!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% endblock %}
+{% block script %}
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+
+var w = (c.width = window.innerWidth),
+  h = (c.height = window.innerHeight),
+  ctx = c.getContext("2d"),
+  minDist = 10,
+  maxDist = 30,
+  initialWidth = 10,
+  maxLines = 100,
+  initialLines = 4,
+  speed = 5,
+  lines = [],
+  frame = 0,
+  timeSinceLast = 0,
+  dirs = [
+    // straight x, y velocity
+    [0, 1],
+    [1, 0],
+    [0, -1],
+    [-1, 0],
+    // diagonals, 0.7 = sin(PI/4) = cos(PI/4)
+    [0.7, 0.7],
+    [0.7, -0.7],
+    [-0.7, 0.7],
+    [-0.7, -0.7]
+  ],
+  starter = {
+    // starting parent line, just a pseudo line
+
+    x: w / 2,
+    y: h / 2,
+    vx: 0,
+    vy: 0,
+    width: initialWidth
+  };
+
+function init() {
+  lines.length = 0;
+
+  for (var i = 0; i < initialLines; ++i) lines.push(new Line(starter));
+
+  ctx.fillStyle = "#222";
+  ctx.fillRect(0, 0, w, h);
+
+  // if you want a cookie ;)
+  // ctx.lineCap = 'round';
+}
+function getColor(x) {
+  return "hsl( hue, 80%, 50% )".replace("hue", (x / w) * 360 + frame);
+}
+function anim() {
+  window.requestAnimationFrame(anim);
+
+  ++frame;
+
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = "rgba(0,0,0,.02)";
+  ctx.fillRect(0, 0, w, h);
+  ctx.shadowBlur = 0.5;
+
+  for (var i = 0; i < lines.length; ++i)
+    if (lines[i].step()) {
+      // if true it's dead
+
+      lines.splice(i, 1);
+      --i;
+    }
+
+  // spawn new
+
+  ++timeSinceLast;
+
+  if (lines.length < maxLines && timeSinceLast > 10 && Math.random() < 0.5) {
+    timeSinceLast = 0;
+
+    lines.push(new Line(starter));
+
+    // cover the middle;
+    ctx.fillStyle = ctx.shadowColor = getColor(starter.x);
+    ctx.beginPath();
+    ctx.arc(starter.x, starter.y, initialWidth, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function Line(parent) {
+  this.x = parent.x | 0;
+  this.y = parent.y | 0;
+  this.width = parent.width / 1.25;
+
+  do {
+    var dir = dirs[(Math.random() * dirs.length) | 0];
+    this.vx = dir[0];
+    this.vy = dir[1];
+  } while (
+    (this.vx === -parent.vx && this.vy === -parent.vy) ||
+    (this.vx === parent.vx && this.vy === parent.vy)
+  );
+
+  this.vx *= speed;
+  this.vy *= speed;
+
+  this.dist = Math.random() * (maxDist - minDist) + minDist;
+}
+Line.prototype.step = function () {
+  var dead = false;
+
+  var prevX = this.x,
+    prevY = this.y;
+
+  this.x += this.vx;
+  this.y += this.vy;
+
+  --this.dist;
+
+  // kill if out of screen
+  if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) dead = true;
+
+  // make children :D
+  if (this.dist <= 0 && this.width > 1) {
+    // keep yo self, sometimes
+    this.dist = Math.random() * (maxDist - minDist) + minDist;
+
+    // add 2 children
+    if (lines.length < maxLines) lines.push(new Line(this));
+    if (lines.length < maxLines && Math.random() < 0.5)
+      lines.push(new Line(this));
+
+    // kill the poor thing
+    if (Math.random() < 0.2) dead = true;
+  }
+
+  ctx.strokeStyle = ctx.shadowColor = getColor(this.x);
+  ctx.beginPath();
+  ctx.lineWidth = this.width;
+  ctx.moveTo(this.x, this.y);
+  ctx.lineTo(prevX, prevY);
+  ctx.stroke();
+
+  if (dead) return true;
+};
+
+init();
+anim();
+
+window.addEventListener("resize", function () {
+  w = c.width = window.innerWidth;
+  h = c.height = window.innerHeight;
+  starter.x = w / 2;
+  starter.y = h / 2;
+
+  init();
+});
+
+
+{% endblock %}

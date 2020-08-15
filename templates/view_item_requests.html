@@ -1,0 +1,100 @@
+{#{% extends 'basic.html' %}#}
+{#{% block title %} My Items {% endblock %}#}
+{#{% load static %}#}
+{#{% block body %}#}
+{#    <h1>My Item Requests</h1>#}
+{#    <span><a href="{% url 'submit' %}">New Request</a></span>#}
+{#    <ul style="list-style:none">#}
+{#        {% for item in queryset %}#}
+{#            <li>#}
+{#                <img src="{{ item.item_image.url }}" alt = "Image of {{ item.item_name }}" style ="max-height:100px;max-width:100px">#}
+{#                <span>Item name: {{ item.item_name }}</span>#}
+{#                <span>Category: {{ item.item_category }}</span>#}
+{#                <span>Sub Category: {{ item.item_subcategory }}</span>#}
+{#                <span>Start Date: {{ item.item_start_date }}</span>#}
+{#                <span>End Date: {{ item.item_end_date }}</span>#}
+{#                <span><a href="{% url 'deleteitem' item.id%}">Delete</a></span>#}
+{#                <span><a href="{% url 'itemRequestPage' item.id%}">View Full Details</a></span>#}
+{#                <hr>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+{#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
+{#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>#}
+{#{% endblock %}#}
+
+{% extends 'basic.html' %}
+{% block title %} My Items {% endblock %}
+{% load static %}
+{% block css %}
+    body{
+      font-family:Palatino;
+      background-image:url("https://www.desktopbackground.org/p/2010/09/04/74808_online-buy-wholesale-light-color-backgrounds-from-china-light_696x691_h.jpg");
+    }
+     table,tr,td{
+
+        width:100%;
+        padding-left:15px;
+        padding-right:15px;
+        font-size:25px;
+
+
+     }
+    td{
+        width:33%;
+    }
+     #newreq{
+       font-size:25px;
+
+
+     }
+     .recontent{
+       text-align:center;
+
+     }
+
+    #view-title{
+        padding-top:15px;
+    }
+{% endblock %}
+{% block body %}
+    <h1 id="view-title" style="font-size:80px; text-align:center;">My Item Request</h1>
+<div class="recontent">
+    <br>
+    <span><a  id="newreq" href="{% url 'submit' %}">New Request</a></span>
+    <br><br>
+</div>
+    <hr style="border-width: 2px;color: black;background-color:grey">
+    <div class="container">
+
+        {% for item in queryset %}
+
+      <table id="dsiplaycontent">
+      <tr>
+        <td>  <img src="{{ item.item_image.url }}" alt="Image of {{ item.item_name }}" style ="max-height:200px;max-width:200px;"></td>
+        <td>  <span>Category: {{ item.item_category }}</span></td>
+        <td>  <span>Subcategory: {{ item.item_subcategory }}</span></td>
+          <td>  <span><a href="{% url 'deleteitem' item.id%}">Delete</a></span></td>
+
+      </tr>
+      <tr>
+          <td>  <span>{{ item.item_name }}</span></td>
+
+            <td>  <span>Start Date: {{ item.item_start_date }}</span></td>
+            <td>  <span>End Date: {{ item.item_end_date }}</span></td>
+            <td>  <span><a href="{% url 'itemRequestPage' item.id%}">Details</a></span></td>
+
+      </tr>
+
+
+
+    </table>
+    <hr style="border-width: 2px;color: black;background-color:grey">
+{% endfor %}
+      </div>
+    </ul>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% endblock %}

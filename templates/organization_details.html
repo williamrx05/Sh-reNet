@@ -1,0 +1,58 @@
+{% extends 'basic.html' %}
+{% block title %} Organization Details {% endblock %}
+{% load static %}
+{% block css %}
+    body{
+    font-family:Palatino;
+
+        background-image:url('https://www.talentedge.co.uk/wp-content/uploads/2020/02/IR35-dimmed2.jpeg');
+      }
+    .carditem{
+    padding-top: 100px;
+    padding-bottom:100px;
+
+     }
+
+     .card-img-top{
+       height: auto;
+        width: 400px;
+    margin: 0 auto; /* Added /
+        float: none; / Added /
+        margin-bottom: 10px; / Added */
+     }
+    .container{
+        text-align:center;
+        align:center;
+    }
+    .card{
+
+    margin: 0 auto; /* Added /
+        float: none; / Added /
+        margin-bottom: 10px; / Added */
+    }
+
+
+{% endblock %}
+{% block body %}
+    <div class="carditem ">
+      <div class="card" style="width: 40rem; ">
+        <img class="card-img-top" src="{{ organization.logo.url }}" alt="Image of {{ organization.organization_name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ organization.organization_name }}</h5>
+          <p class="card-text">{{ organization.organization_description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Website: <a href="{{ organization.organization_website }}">{{ organization.organization_name }}</a></li>
+          <li class="list-group-item">Admin: {{ organization.admin_name }}</li>
+          <li class="list-group-item">Email: {{ organization.email }}</li>
+          <li class="list-group-item">Country: {{ organization.country }}</li>
+          <li class="list-group-item">Postal Code: {{ organization.postal_code }}</li>
+
+        </ul>
+      </div>
+    </div>
+    <!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'basic.html' %}
+{% block title %} Home {% endblock %}
+{% load static %}
+{% block css %}
+body{
+        background:black;
+        color:white;
+      }
+      .Headerimg{
+        z-index:-1;
+        height:550px;
+        width:100%;
+        position:absolute;
+
+      }
+      #msg{
+       text-align:center;
+       font-size:40px;
+       font-family:Lucida Bright;
+
+       padding-top:150px;
+
+      }
+      .ml2 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.container{
+  text-align:center;
+  font-family:Geneva;
+}
+html,
+body {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background: #191d1e; /* Old browsers */
+  background: -moz-linear-gradient(
+    0deg,
+    #191d1e 50%,
+    #283139 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(50%, #191d1e),
+    color-stop(100%, #283139)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    0deg,
+    #191d1e 50%,
+    #283139 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    0deg,
+    #191d1e 50%,
+    #283139 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* IE10+ */
+  background: linear-gradient(0deg, #191d1e 50%, #283139 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191d1e', endColorstr='#283139',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-attachment: fixed;
+}
+
+#projector {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.center-div {
+  width: 580px;
+  height: 374px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -290px;
+  margin-top: -187px;
+}
+
+#preloaderDiv {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -27px;
+  margin-top: -27px;
+}
+
+#logo {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+#date2014 {
+  position: absolute;
+  padding-left: 210px;
+  padding-top: 15px;
+  opacity: 0;
+  top: 303px;
+  left: 0;
+  filter: alpha(opacity=0);
+}
+{% endblock %}
+{% block body %}
+    <canvas id="projector">Your browser does not support the Canvas element.</canvas>
+
+
+  <div id="msg">
+  <h1 class="ml2">Welcome to Sh@reNet</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  </div>
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+
+
+<div class="container">
+<h1 >Our Mission</h1>
+<br>
+<h4>Sh@renet creates a network between various organizations to share resources. It is an e-platform which provides space for uploading the inventory of equipment or items one has and, at the same time, request for the equipment and items one needs. The institutions and organizations can register on this platform with the common intention of multiplying resources by way of sharing. The mission of Sh@renet is to enable sharing and pooling of resources among, and between, various institutions and organizations like health, education, and public works department etc. for the better health, education, wellbeing and common good of the society. This will help the economically challenged African countries to optimally utilize the resources and pursue the path of growth.</h4>
+<br><br>
+
+
+<br><br><br>
+
+<h1 >How can you help?</h1>
+<br><br>
+<h4 >Join the Sh@reNet community by making an account and add all your available resources. Anyone who needs that item will contact you via mail and you can discuss the details with them. </h4>
+<h4 >Our service is perfect for NGO's to locate what is required and where it is required. They can coordinate with various organizations who are a part of this community and coordinate the sharing and distribution of resouces already available</h4>
+<br><br><br>
+<h1 >How to proceed?</h1>
+<br><br>
+<ul>
+  <li>Click on login</li>
+  <li>Choose the register button and make an account</li>
+  <li>Add all available items and required items</li>
+  <li>Explore the community by searching organization and items!</li>
+</ul>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% endblock %}
+{% block script %}
+  var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+
+{% endblock %}

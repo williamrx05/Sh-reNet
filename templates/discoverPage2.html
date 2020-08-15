@@ -1,0 +1,125 @@
+{% extends 'basic.html' %}
+
+  {% block title %}Discover page{% endblock %}
+
+      {%block css%}
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+          width:100%;
+          height:250px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev,
+          body .carousel-control-next{
+          background-color: blue;
+          top:auto;
+          bottom:auto;
+          }
+          .carousel-control-prev-icon,
+          .carousel-control-next-icon{
+          background-color: blue;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+  {% endblock %}
+
+  {% block body %}
+
+{%load static%}
+
+  <!--Slideshow starts here -->
+  {%for product,range,nSLides in allProds%}
+<div class="container">
+    <h1 class="my-4">{{product.0.item_category}}</h1>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 18rem; ">
+        <img class="card-img-top" src="/media/{{product.0.item_image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.0.item_name }}</h5>
+          <p class="card-text">Description: {{ product.0.item_description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="{% url 'organizationPage' product.0.item_organization.id%}" class="card-link">{{ product.0.item_organization }}</a></li>
+          <li class="list-group-item">Subcategory: {{ product.0.item_subcategory }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'itemPage' product.0.id%}" class="card-link">View Details</a>
+
+        </div>
+      </div>
+       </div>
+
+
+        {% for i in product|slice:"1:"%}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="card" style="width: 18rem; ">
+        <img class="card-img-top" src="/media/{{i.item_image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ i.item_name }}</h5>
+          <p class="card-text">Description: {{ i.item_description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="{% url 'organizationPage' i.item_organization.id%}" class="card-link">{{ i.item_organization }}</a></li>
+          <li class="list-group-item">Subcategory: {{ i.item_subcategory }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'itemPage' i.id%}" class="card-link">View Details</a>
+        </div>
+      </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+</div>
+
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+{%endfor%}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% endblock %}
