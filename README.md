@@ -1,7 +1,7 @@
 # Sh-reNet
 
 Full stack webapp: A database exchange system where users can post their unused items and request items they require. Other users can use a built-in email function to respond to posts/requests. 
-[Video Presentation](https://www.youtube.com/watch?v=xcVju0oCvbo&feature=youtu.be "ShareNet Presentation") - Made by Aaditya Yadav
+[Video Presentation](https://www.youtube.com/watch?v=xcVju0oCvbo&feature=youtu.be "ShareNet Presentation")
 
 # Features
 
@@ -40,4 +40,4 @@ Django - Python Web Framework
 # Authors
 
 [William Xu](https://github.com/williamrx05 "williamrx05 GitHub Profile") - Backend/Frontend </br>
-[Aaditya Yadav](https://github.com/aadityayadav "aadityayadav GitHub Profile") - Backend/Frontend
+[Aaditya Yadav](https://github.com/aadityayadav "aadityayadav GitHub Profile") - Backend/Frontend + Video Presentation
