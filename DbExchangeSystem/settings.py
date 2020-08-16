@@ -91,7 +91,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ShareNet',
+            'NAME': 'sharenet',
             'USER': 'william',
             'PASSWORD': '1234123four',
             'HOST': 'localhost',
