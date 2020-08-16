@@ -38,5 +38,5 @@ Django - Python Web Framework
 
 # Authors
 
-[William Xu](https://github.com/williamrx05 "williamrx05 GitHub Profile") </br>
-[Aaditya Yadav](https://github.com/aadityayadav "aadityayadav GitHub Profile")
+[William Xu](https://github.com/williamrx05 "williamrx05 GitHub Profile") - Backend/Frontend </br>
+[Aaditya Yadav](https://github.com/aadityayadav "aadityayadav GitHub Profile") - Backend/Frontend
