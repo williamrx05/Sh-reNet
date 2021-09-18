@@ -31,7 +31,7 @@ Check requirements.txt file
 ```
 # Deployment
 
-For the purposes of this project(Hackathon: Africa Hacks), it was temporarily deployed on a Digital Ocean Droplet virtual machine. Can be deployed through gunicorn.
+https://williamxu.pythonanywhere.com/home/
 
 # Built With
 
