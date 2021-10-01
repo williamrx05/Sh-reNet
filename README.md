@@ -2,6 +2,10 @@
 
 Full stack webapp: A database exchange system where users can post their unused items and request items they require. Other users can use a built-in email function to respond to posts/requests. 
 
+# Deployment
+
+https://williamxu.pythonanywhere.com/home/
+
 https://user-images.githubusercontent.com/66583944/135556036-86fe55f9-9f14-4bcc-aba0-23fabb8ba2d2.mp4
 
 # Features
@@ -30,9 +34,6 @@ Check requirements.txt file
 % python manage.py migrate
 % python manage.py runserver
 ```
-# Deployment
-
-https://williamxu.pythonanywhere.com/home/
 
 # Built With
 
