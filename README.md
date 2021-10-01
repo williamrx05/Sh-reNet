@@ -1,7 +1,8 @@
 # Sh-reNet
 
 Full stack webapp: A database exchange system where users can post their unused items and request items they require. Other users can use a built-in email function to respond to posts/requests. 
-[Video Presentation](https://www.youtube.com/watch?v=xcVju0oCvbo&feature=youtu.be "ShareNet Presentation")
+
+https://user-images.githubusercontent.com/66583944/135556036-86fe55f9-9f14-4bcc-aba0-23fabb8ba2d2.mp4
 
 # Features
 
